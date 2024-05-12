@@ -31,3 +31,10 @@ class HhApi(Parser):
         self.vacancies = []
 
 
+    def get_request(self):
+        response = requests.get(self.url, params=self.params)
+        if response.status_code != 200:
+            raise ParsingError(f'Ошибка выполнения запроса: {response.status_code}')
+        return response.json()
+
+
