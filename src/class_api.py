@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 from src.exceptions import ParsingError
 import requests
-import json
-import os
 
 
 class Parser(ABC):
@@ -42,7 +40,7 @@ class HhApi(Parser):
         for page in range(page_count):
             vacancies_list = []
             self.params["page"] = page
-            print(f'{self.__class__.__name__} - страница вакансий _{page}_:', end="")
+            print(f'{self.__class__.__name__} >> страница вакансий _{page+1}:', end=" ")
             try:
                 vacancies_list = self.get_request()
             except ParsingError as e:
@@ -63,11 +61,11 @@ class HhApi(Parser):
                 "vacancy_name": vacancy["name"],
                 "vacancy_url": vacancy["url"],
                 "api": "HeadHunter",
-                "salary_from": vacancy["salary"]["from"] if vacancy["salary"]["from"] else None,
-                "salary_to": vacancy["salary"]["to"] if vacancy["salary"]["to"] else None,
-                "currency": vacancy["salary"]["currency"] if vacancy["salary"]["currency"] else None,
-                "employer": vacancy["employer"]["name"] if vacancy["employer"]["name"] else None,
-                "schedule": vacancy["schedule"]["name"] if vacancy["schedule"]["name"] else None,
+                "salary_from": vacancy["salary"]["from"] if vacancy["salary"] else None,
+                "salary_to": vacancy["salary"]["to"] if vacancy["salary"] else None,
+                "currency": vacancy["salary"]["currency"] if vacancy["salary"] else None,
+                "employer": vacancy["employer"]["name"] if vacancy["employer"] else None,
+                "schedule": vacancy["schedule"]["name"] if vacancy["schedule"] else None,
             }
             output_vacancies.append(output_vacancy)
         return output_vacancies

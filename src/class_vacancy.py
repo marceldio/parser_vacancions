@@ -17,7 +17,7 @@ class Vacancy:
                 Ссылка: {self.vacancy_url}\n
                 Зарплата: от {self.salary_from} - до {self.salary_to} ({self.currency})\n
                 Работодатель: {self.employer}\n
-                Удаленно: {self.schedule}               
+                График: {self.schedule}               
                 """
 
     def __ge__(self, other):
@@ -27,7 +27,3 @@ class Vacancy:
     def __lt__(self, other):
         if self.salary_from and other.salary_from != None:
             return self.salary_from < other.salary_from
-
-
-
-
