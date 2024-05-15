@@ -38,7 +38,6 @@ class HhApi(Parser):
     def get_vacancies(self, page_count=1):
         self.vacancies = []
         for page in range(page_count):
-            vacancies_list = []
             self.params["page"] = page
             print(f'{self.__class__.__name__} >> страница вакансий _{page+1}:', end=" ")
             try:
@@ -47,8 +46,8 @@ class HhApi(Parser):
                 print(e)
             else:
                 self.vacancies.extend(vacancies_list["items"])
-                print(f'Получено вакансий - {len(vacancies_list)}')
-                if len(vacancies_list) == 0:
+                print(f'Получено вакансий - {len(self.vacancies)}')
+                if len(self.vacancies) == 0:
                     print('Вакансий нет')
                     break
         return self.vacancies
@@ -61,7 +60,7 @@ class HhApi(Parser):
                 "vacancy_name": vacancy["name"],
                 "vacancy_url": vacancy["url"],
                 "api": "HeadHunter",
-                "salary_from": vacancy["salary"]["from"] if vacancy["salary"] else None,
+                "salary_from": vacancy["salary"]["from"] if vacancy["salary"] else 0,
                 "salary_to": vacancy["salary"]["to"] if vacancy["salary"] else None,
                 "currency": vacancy["salary"]["currency"] if vacancy["salary"] else None,
                 "employer": vacancy["employer"]["name"] if vacancy["employer"] else None,

@@ -5,7 +5,7 @@ from src.class_api import HhApi
 def main():
     vacancies_json = []
     query = input('Введите запрос для поиска:__ ').title().strip()
-    page_count = int(input('Введите количество страниц:__ '))
+    page_count = int(input('Введите количество страниц(100 вакансий на странице):__ '))
 
     """Создание экземпляра класса"""
     hh_answer = HhApi(query)

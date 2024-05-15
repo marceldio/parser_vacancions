@@ -20,10 +20,16 @@ class Vacancy:
                 График: {self.schedule}               
                 """
 
-    def __ge__(self, other):
-        if self.salary_from and other.salary_from != None:
-            return self.salary_from >= other.salary_from
+    def __gt__(self, other):
+        if self.salary_from is not None and other.salary_from is not None:
+            return self.salary_from > other.salary_from
+        elif self.salary_from is not None and other.salary_to is None:
+            return True
+        else:
+            return False
 
-    def __lt__(self, other):
-        if self.salary_from and other.salary_from != None:
-            return self.salary_from < other.salary_from
+    def __le__(self, other):
+        """
+        Вызывается при использовании оператора '<='. Вызывает __gt__ для обратного сравнения.
+        """
+        return other.__gt__(self)
