@@ -5,7 +5,13 @@ from src.class_api import HhApi
 def main():
     vacancies_json = []
     query = input('Введите запрос для поиска:__ ').title().strip()
-    page_count = int(input('Введите количество страниц(100 вакансий на странице):__ '))
+    while True:
+        page_count_input = input('Введите количество страниц(100 вакансий на странице):__ ')
+        if not page_count_input.isdigit():
+            print("Ошибка ввода: введите число")
+            continue
+        page_count = int(page_count_input)
+        break
 
     """Создание экземпляра класса"""
     hh_answer = HhApi(query)
@@ -34,6 +40,7 @@ def main():
         else:
             print("Ошибка ввода, введите одну из трех команд:")
             continue
+
         for vacancy in vacancies:
             print(vacancy, end="\n")
 
