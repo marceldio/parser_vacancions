@@ -6,6 +6,7 @@ import os
 class Connector:
 
     def __init__(self, query, vacancies_json):
+        """Функция конструктора создания файла по запросу"""
         self.filename = f"{query}.json"
         self.vacancies_json = vacancies_json
 
@@ -26,7 +27,7 @@ class Connector:
             json.dump(self.vacancies_json, file, indent=4, ensure_ascii=False)
 
     def select(self):
-        """Читаем файл"""
+        """Читаем полученный файл"""
         data_folder = "data"
 
         # Формируем полный путь к файлу

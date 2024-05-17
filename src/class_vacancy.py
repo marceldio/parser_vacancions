@@ -1,5 +1,6 @@
 class Vacancy:
     def __init__(self, vacancy_id, vacancy_name, vacancy_url, api, salary_from, salary_to, currency, employer, schedule):
+        """Функция конструктора для класса Вакансия"""
         self.vacancy_id = vacancy_id
         self.vacancy_name = vacancy_name
         self.vacancy_url = vacancy_url
@@ -11,6 +12,7 @@ class Vacancy:
         self.schedule = schedule
 
     def __str__(self):
+        """Функция строкового представления экземпляра класса Вакансия"""
         return f"""
                 Id: {self.vacancy_id}\n
                 Вакансия: {self.vacancy_name}\n
@@ -21,6 +23,7 @@ class Vacancy:
                 """
 
     def __gt__(self, other):
+        """Функция сравнения вакансий по 'зарплата_от' """
         if self.salary_from is not None and other.salary_from is not None:
             return self.salary_from > other.salary_from
         elif self.salary_from is not None and other.salary_to is None:

@@ -21,6 +21,7 @@ class HhApi(Parser):
     url = "https://api.hh.ru/vacancies/"
 
     def __init__(self, query):
+        """Функция конструктора запроса"""
         self.params = {
             "per_page": 100,
             "page": int,
@@ -30,12 +31,14 @@ class HhApi(Parser):
         self.vacancies = []
 
     def get_request(self):
+        """Функция запроса к внешнему сайту"""
         response = requests.get(self.url, params=self.params)
         if response.status_code != 200:
             raise ParsingError(f'Ошибка выполнения запроса: {response.status_code}')
         return response.json()
 
     def get_vacancies(self, page_count=1):
+        """Функция получения данных на основании запроса"""
         self.vacancies = []
         for page in range(page_count):
             self.params["page"] = page
@@ -53,6 +56,7 @@ class HhApi(Parser):
         return self.vacancies
 
     def get_output_vacancies(self):
+        """Функция вывода данных в нужном формате"""
         output_vacancies = []
         for vacancy in self.vacancies:
             output_vacancy = {

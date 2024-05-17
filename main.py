@@ -4,7 +4,9 @@ from src.class_api import HhApi
 
 def main():
     vacancies_json = []
+    """Получаем запрос от пользователя"""
     query = input('Введите запрос для поиска:__ ').title().strip()
+    """Проверяем что введенный символ число(количество страниц)"""
     while True:
         page_count_input = input('Введите количество страниц(100 вакансий на странице):__ ')
         if not page_count_input.isdigit():
@@ -25,6 +27,7 @@ def main():
     connector.select()
     connector.sorted_salary()
 
+    """Проверяем введенную команду пользователя, выводим результат"""
     while True:
         command = input("1 - Показать список\n"
                         "2 - Сортировать по з/п\n"
