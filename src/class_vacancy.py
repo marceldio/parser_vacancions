@@ -14,11 +14,11 @@ class Vacancy:
     def __str__(self):
         """Функция строкового представления экземпляра класса Вакансия"""
         return f"""
-                Id: {self.vacancy_id}\n
-                Вакансия: {self.vacancy_name}\n
-                Ссылка: {self.vacancy_url}\n
-                Зарплата: от {self.salary_from} - до {self.salary_to} ({self.currency})\n
-                Работодатель: {self.employer}\n
+                Id: {self.vacancy_id}
+                Вакансия: {self.vacancy_name}
+                Ссылка: {self.vacancy_url}
+                Зарплата: от {self.salary_from} - до {self.salary_to} ({self.currency})
+                Работодатель: {self.employer}
                 График: {self.schedule}               
                 """
 
