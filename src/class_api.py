@@ -24,7 +24,7 @@ class HhApi(Parser):
         """Функция конструктора запроса"""
         self.params = {
             "per_page": 100,
-            "page": int,
+            "page": 0,
             "text": query,
             "archived": False,
         }
