@@ -2,16 +2,19 @@ from src.class_vacancy import Vacancy
 import json
 import os
 
+# Устанавливаем путь к корневой директории проекта
+project_root = '/home/md/PycharmProjects/parser_vacancions'
 
 class Connector:
 
     def __init__(self, query, vacancies_json):
         """Функция конструктора создания файла по запросу"""
         self.filename = f"{query}.json"
-        self.data_folder = "data"  # Имя папки для хранения файлов с вакансиями
+        # Указываем папку для хранения файлов с вакансиями
+        self.data_folder = os.path.join(project_root, "data")
+        # Путь к файлу
         self.file_path = os.path.join(self.data_folder, self.filename)
         self.vacancies_json = vacancies_json
-
 
     def insert(self):
         """Записываем файл в папку data"""
