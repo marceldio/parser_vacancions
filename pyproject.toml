@@ -12,6 +12,6 @@ requests = "^2.31.0"
 beautifulsoup4 = "^4.12.3"
 
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+#[build-system]
+#requires = ["poetry-core"]
+#build-backend = "poetry.core.masonry.api"
